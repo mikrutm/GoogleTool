@@ -19,6 +19,8 @@ from os.path import dirname, abspath
 import os
 
 days_back_then =  7
+base="light"
+st.title('Twitter Tool WAO')
 
 
 #initialize driver
@@ -115,6 +117,7 @@ values = list(dict_google.values())[-22:]
 #df.to_csv(file_dataframe)
 
 driver.close()
+st.dataframe(df)
 
 #os.system(f"python3 {Path(dname)}/monitorowane/GT_filter_and_plot.py")
 #sometimes usefull
