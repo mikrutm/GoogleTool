@@ -35,11 +35,6 @@ options.add_argument('--disable-gpu')
 options.add_argument('--headless')
 
 
-
-
-options = Options()
-options.add_argument("--headless")
-
 days_back_then =  7
 base="light"
 st.title('Google Tool WAO')
