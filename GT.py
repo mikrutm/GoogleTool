@@ -1,4 +1,4 @@
-import streamlit 
+import streamlit  as st
 from selenium import webdriver
 import matplotlib.pyplot as plt
 from selenium.webdriver.common.keys import Keys
@@ -17,14 +17,18 @@ import time
 from datetime import datetime
 from os.path import dirname, abspath
 import os
+from selenium.webdriver.firefox.options import Options
+
+options = Options()
+options.add_argument("--headless")
 
 days_back_then =  7
 base="light"
-st.title('Twitter Tool WAO')
+st.title('Google Tool WAO')
 
 
 #initialize driver
-driver = webdriver.Firefox()
+driver = webdriver.Firefox(options = options)
 wait =  WebDriverWait(driver, 12);
 
 #open site 
@@ -90,6 +94,7 @@ df["Value"] = count_list
 df["Trend description"] = i_s
 df["Source"] = [a[:-11] for a in  i_c]
 #print(df)
+st.dataframe(df)
 
 #addition of values if we have douplicates in trends  (same trend in 2 or more days)
 
@@ -117,7 +122,7 @@ values = list(dict_google.values())[-22:]
 #df.to_csv(file_dataframe)
 
 driver.close()
-st.dataframe(df)
+
 
 #os.system(f"python3 {Path(dname)}/monitorowane/GT_filter_and_plot.py")
 #sometimes usefull
