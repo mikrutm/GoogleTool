@@ -16,9 +16,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 from datetime import datetime
 from os.path import dirname, abspath
-import os
 from selenium.webdriver.firefox.options import Options
-
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -33,7 +31,7 @@ options.add_argument('--headless')
 
 days_back_then =  7
 base="light"
-st.title('Google Tool WAO')
+st.title('Google Tool')
 
 
 #initialize driver
