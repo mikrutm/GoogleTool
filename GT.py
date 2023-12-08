@@ -1,32 +1,49 @@
+import streamlit  as st
+from selenium import webdriver
+import matplotlib.pyplot as plt
+from selenium.webdriver.common.keys import Keys
+import pandas as pd
+import time
+import csv 
+import re
+import sys 
+from pathlib import Path
+import os 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support import expected_conditions as EC
+import time
+from datetime import datetime
+from os.path import dirname, abspath
+from selenium.webdriver.firefox.options import Options
+import streamlit  as st
+
 with st.echo():
     from selenium import webdriver
-    from selenium.webdriver.chrome.options import Options
-    from selenium.webdriver.chrome.service import Service
-    from webdriver_manager.chrome import ChromeDriverManager
-
-    @st.experimental_singleton
+    
+    @st.cache_resource
     def get_driver():
-        return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-
+        return webdriver.Firefox()
+    
+    
     options = Options()
     options.add_argument('--disable-gpu')
     options.add_argument('--headless')
 
     driver = get_driver()
-    driver.get("http://example.com")
+    wait =  WebDriverWait(driver, 12);
 
     st.code(driver.page_source)
+    days_back_then =  7
+    base="light"
+    st.title('Google Tool')
+    st.subheader("Damn")
+    driver.get('https://trends.google.pl/trends/trendingsearches/daily?geo=PL')
+    element = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "cookieBarConsentButton")))
+    element.click()
 
-
-
-
-
-
-
-
-
-
-
+"""
 
 import streamlit  as st
 from selenium import webdriver
@@ -47,12 +64,7 @@ import time
 from datetime import datetime
 from os.path import dirname, abspath
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 
-@st.cache_resource
-def get_driver():
-    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 options = Options()
 options.add_argument('--disable-gpu')
@@ -66,7 +78,6 @@ st.subheader("Damn")
 
 #initialize driver
 
-driver = get_driver()
 wait =  WebDriverWait(driver, 12);
 
 #open site 
@@ -168,3 +179,4 @@ driver.close()
 #plt.show()
 
 
+"""
