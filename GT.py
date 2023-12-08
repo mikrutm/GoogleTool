@@ -18,9 +18,8 @@ from datetime import datetime
 from os.path import dirname, abspath
 from selenium.webdriver.firefox.options import Options
 import streamlit  as st
-
+st.title('Google Tool')
 with st.echo():
-    from selenium import webdriver
     
     @st.cache_resource
     def get_driver():
