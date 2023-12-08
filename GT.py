@@ -19,28 +19,23 @@ from os.path import dirname, abspath
 from selenium.webdriver.firefox.options import Options
 import streamlit  as st
 st.title('Google Tool')
-with st.echo():
     
-    @st.cache_resource
-    def get_driver():
-        return webdriver.Firefox()
-    
-    
-    options = Options()
-    options.add_argument('--disable-gpu')
-    options.add_argument('--headless')
-
-    driver = get_driver()
-    wait =  WebDriverWait(driver, 12);
-
-    st.code(driver.page_source)
-    days_back_then =  7
-    base="light"
-    st.title('Google Tool')
-    st.subheader("Damn")
-    driver.get('https://trends.google.pl/trends/trendingsearches/daily?geo=PL')
-    element = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "cookieBarConsentButton")))
-    element.click()
+@st.cache_resource
+def get_driver():
+    return webdriver.Firefox()
+options = Options()
+options.add_argument('--disable-gpu')
+options.add_argument('--headless')
+driver = get_driver()
+wait =  WebDriverWait(driver, 12);
+st.code(driver.page_source)
+days_back_then =  7
+base="light"
+st.title('Google Tool')
+st.subheader("Damn")
+driver.get('https://trends.google.pl/trends/trendingsearches/daily?geo=PL')
+element = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "cookieBarConsentButton")))
+element.click()
 
 """
 
